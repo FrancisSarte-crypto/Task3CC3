@@ -14,7 +14,7 @@ public class Repository {
 
         String sql = """
             INSERT INTO tbl_info
-            (studentNumber, firstName, middleInitial, age, gender, email, course, yearLevel)
+            (studentNumber, firstName, middleInitial, age, gender, email, course, yearLevel, section, school)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             """;
 
@@ -29,6 +29,8 @@ public class Repository {
             pstmt.setString(6, student.getEmail());
             pstmt.setString(7, student.getCourse());
             pstmt.setInt(8, student.getYearLevel());
+            pstmt.setString (9, student.getSection());
+            pstmt.setString(10, student.getSchool());
 
             pstmt.executeUpdate();
 
@@ -56,7 +58,9 @@ public class Repository {
                         rs.getString("gender"),
                         rs.getString("email"),
                         rs.getString("course"),
-                        rs.getInt("yearLevel")
+                        rs.getInt("yearLevel"),
+                        rs.getSection("section"),
+                        rs.getSchool("school")
                 ));
             }
 
