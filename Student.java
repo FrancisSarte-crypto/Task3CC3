@@ -8,10 +8,12 @@ public class Student {
     private String email;
     private String course;
     private int yearLevel;
+    private String section;
+    private String school;
 
     public Student(int studentNumber, String firstName, String middleInitial,
                    int age, String gender, String email,
-                   String course, int yearLevel) {
+                   String course, int yearLevel, String section, String school) {
         this.studentNumber = studentNumber;
         this.firstName = firstName;
         this.middleInitial = middleInitial;
@@ -20,9 +22,11 @@ public class Student {
         this.email = email;
         this.course = course;
         this.yearLevel = yearLevel;
+        this.section = section;
+        this.school = school;
     }
 
-    // Getters from the middle box of your UML
+    
     public int getStudentNumber() { return studentNumber; }
     public String getFirstName() { return firstName; }
     public String getMiddleInitial() { return middleInitial; }
@@ -31,8 +35,10 @@ public class Student {
     public String getEmail() { return email; }
     public String getCourse() { return course; }
     public int getYearLevel() { return yearLevel; }
+    public String getSection() { return section; }
+    public String getSchool() { return school; }
 
-    // stati class
+
     public static class Builder {
         private int studentNumber;
         private String firstName;
@@ -42,6 +48,8 @@ public class Student {
         private String email;
         private String course;
         private int yearLevel;
+        private String section;
+        private String school;
 
         public Builder setStudentNumber(int studentNumber) {
             this.studentNumber = studentNumber;
@@ -82,10 +90,17 @@ public class Student {
             this.yearLevel = yearLevel;
             return this;
         }
+        public Builder setSection(String section) {
+            this.section = section;
+            return this;
+        }
+        public Builder setSchool(String school) {
+            this.school = school;
+            return this;
+        }
 
-        // Final method to return the actual Student object
         public Student build() {
-            return new Student(studentNumber, firstName, middleInitial, age, gender, email, course, yearLevel);
+            return new Student(studentNumber, firstName, middleInitial, age, gender, email, course, yearLevel, section, school);
         }
     }
 }
